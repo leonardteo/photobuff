@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1><%= @photo.title %></h1>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag @photo.photo.url(:large), :class => "img-responsive" %>
+</p>
+
+<div class="photo-description">
+  <%= link_to @photo.user do %>
+    <%= image_tag @photo.user.avatar(:thumbnail), :class => "avatar" %>
+  <% end %>
+
+  <h4><%= @photo.title %></h4>
+  <b><%= @photo.user.name %></b>
+  
+  
+  <%= simple_format @photo.description %>
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photobuff</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/" class="navbar-brand">Photobuff</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Upload Photo", new_photo_path %></li>
+              <li><%= link_to "Profile", profile_path %></li>
+              <li><a href="/logout">Logout</a></li>
+            <% else %>
+              <li><a href="/register">Register</a></li>
+              <li><a href="/login">Login</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Flash error messages -->
+      <% if flash[:error] %>
+      <div class="alert alert-danger"><%= flash[:error] %></div>
+      <% end %>
+      <% if flash[:success] %>
+      <div class="alert alert-success"><%= flash[:success] %></div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+
+    <div style="height: 40px;"></div>
+
+    <footer class="container">
+      <div class="text-center">
+        <small>&copy;2013 Example, Inc.</small>
+      </div>
+    </footer>
+
+    <div style="height: 10px;"></div>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  </body>
+</html>

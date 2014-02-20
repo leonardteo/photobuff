@@ -1,0 +1,19 @@
+<div class="user-public-profile">
+  <p>
+    <%= image_tag @user.avatar(:thumbnail), :class => "avatar" %>
+  </p>
+  <h1><%= @user.name %></h1>
+</div>
+
+
+<div class="row">
+  <% @photos.each do |photo| %>
+  <div class="col-sm-6 col-md-3">
+    <%= link_to photo do %>
+      <p>
+        <%= image_tag photo.photo(:thumbnail), :class => "img-responsive" %>
+      </p>
+    <% end %>
+  </div>
+  <% end %>
+</div>
